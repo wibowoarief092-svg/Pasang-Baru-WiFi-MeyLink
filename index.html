@@ -12,16 +12,24 @@
             box-sizing: border-box;
         }
 
-        /* BACKGROUND UTAMA DENGAN AKSEN ORANGE MEYLINK */
+        /* BACKGROUND MODERN BERANUSANSA INTERNET & AKSEN ORANGE */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Latar belakang putih dengan gradasi lembut orange ke arah kanan bawah */
-            background: linear-gradient(135deg, #ffffff 0%, #ffffff 60%, #ff9900 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            
+            /* Kombinasi warna gelap teknologi dengan gradasi oranye MeyLink */
+            background-color: #121824;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 153, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 86, 179, 0.15) 0%, transparent 40%),
+                /* Pola garis kotak-kotak halus (Grid digital ala internet) */
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
         }
 
         /* KONTENER FORMULIR */
@@ -29,42 +37,33 @@
             background-color: #ffffff;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Bayangan lebih lembut dan dalam */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 500px;
-            border-top: 5px solid #ff9900; /* Aksen garis oranye di atas form */
-            position: relative; /* Untuk aksen dekoratif jika diperlukan */
+            border-top: 6px solid #ff9900; /* Garis Oranye MeyLink */
         }
 
-        /* HEADER BRAND (LOGO & JUDUL) */
+        /* HEADER BRAND (HANYA LOGO & KETERANGAN) */
         .brand-header {
             text-align: center;
             margin-bottom: 30px;
-            border-bottom: 2px solid #eeeeee; /* Garis pemisah tipis */
+            border-bottom: 2px solid #eeeeee;
             padding-bottom: 20px;
         }
 
         /* LOGO MEYLINK */
         .brand-logo {
-            max-width: 180px; /* Lebar logo agar terlihat jelas */
+            max-width: 180px;
             height: auto;
-            margin-bottom: 15px;
-        }
-
-        /* JUDUL FORMULIR */
-        .brand-title {
-            color: #0056b3; /* Biru MeyLink dari logo */
-            margin: 0;
-            font-size: 26px;
-            font-weight: bold;
-            text-transform: uppercase; /* Membuat judul lebih tegas */
-            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
         .brand-subtitle {
-            color: #666666;
+            color: #555555;
             margin: 5px 0 0 0;
             font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         /* GROUP INPUT FORM */
@@ -80,33 +79,33 @@
             font-size: 15px;
         }
 
-        /* INPUT FIELD (TEKS & TEXTAREA) */
+        /* INPUT FIELD */
         .form-group input[type="text"],
         .form-group input[type="tel"],
         .form-group textarea {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #eeeeee; /* Border abu-abu netral */
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 15px;
             color: #333333;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
 
-        /* INPUT FIELD KETIKA AKTIF (FOCUS) */
+        /* FOKUS INPUT KE WARNA ORANGE */
         .form-group input:focus,
         .form-group textarea:focus {
-            border-color: #ff9900; /* Border berubah menjadi oranye MeyLink */
+            border-color: #ff9900;
+            box-shadow: 0 0 8px rgba(255, 153, 0, 0.2);
             outline: none;
         }
 
-        /* TEXTAREA KHUSUS */
         .form-group textarea {
             resize: vertical;
-            height: 100px;
+            height: 90px;
         }
 
-        /* WRAAPER UNTUK KOLOM LOKASI (INPUT + TOMBOL) */
+        /* GPS / LOKASI AUTOMATION */
         .location-wrapper {
             display: flex;
             gap: 10px;
@@ -115,49 +114,48 @@
 
         .location-wrapper input {
             flex: 1;
-            background-color: #f9f9f9; /* Latar belakang input sedikit berbeda untuk readonly */
+            background-color: #f7f7f7;
         }
 
-        /* TOMBOL "AMBIL ULANG LOKASI" */
         .btn-location {
-            background-color: #ffffff; /* Putih bersih */
-            color: #ff9900; /* Teks oranye MeyLink */
-            border: 2px solid #ff9900; /* Border oranye MeyLink */
-            padding: 10px 18px;
+            background-color: #ffffff;
+            color: #ff9900;
+            border: 2px solid #ff9900;
+            padding: 11px 18px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 13px;
             font-weight: bold;
             white-space: nowrap;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s;
         }
 
         .btn-location:hover {
-            background-color: #ff9900; /* Menjadi oranye saat hover */
-            color: #ffffff; /* Teks menjadi putih saat hover */
+            background-color: #ff9900;
+            color: #ffffff;
         }
 
-        /* CATATAN KECIL DI BAWAH INPUT */
         .note {
             font-size: 12px;
-            color: #777777;
+            color: #666666;
             margin-top: 7px;
             font-style: italic;
         }
 
-        /* INPUT FILE KHUSUS */
+        /* INPUT FOTO DENGAN KAMERA */
         .form-group input[type="file"] {
-            border: 2px dashed #ff9900; /* Border putus-putus oranye MeyLink */
-            padding: 10px;
+            border: 2px dashed #ff9900;
+            padding: 12px;
             width: 100%;
             border-radius: 8px;
-            color: #777777;
-            background-color: #fffaf0; /* Sedikit warna cream */
+            color: #555555;
+            background-color: #fffcf7;
+            cursor: pointer;
         }
 
-        /* TOMBOL KIRIM UTAMA (WHATSAPP) */
+        /* TOMBOL SUBMIT KE WHATSAPP ADMIN */
         .btn-submit {
-            background-color: #25D366; /* Warna hijau khas WhatsApp */
+            background-color: #25D366;
             color: #ffffff;
             border: none;
             padding: 15px 25px;
@@ -166,34 +164,33 @@
             border-radius: 10px;
             width: 100%;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: all 0.3s;
             margin-top: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
 
         .btn-submit:hover {
-            background-color: #1aae54; /* Hijau lebih gelap saat hover */
-            transform: translateY(-2px); /* Efek terangkat sedikit */
+            background-color: #1aae54;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
         .btn-submit:active {
-            transform: translateY(1px); /* Efek ditekan */
+            transform: translateY(1px);
         }
-
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <!-- HEADER BRAND: LOGO & JUDUL -->
+    <!-- HEADER BRAND: HANYA LOGO DAN SUB-JUDUL -->
     <div class="brand-header">
-        <!-- PASTIKAN FILE logo.png ADA DI FOLDER YANG SAMA -->
+        <!-- Pastikan file logo.png berada di satu folder yang sama di GitHub -->
         <img src="logo.png" alt="Logo MeyLink" class="brand-logo">
-        <h1 class="brand-title">MeyLink</h1>
         <div class="brand-subtitle">Formulir Pendaftaran Pasang Baru WiFi</div>
     </div>
     
@@ -201,40 +198,42 @@
         <!-- 1. Input Nama Calon Pelanggan -->
         <div class="form-group">
             <label for="nama">Nama Lengkap</label>
-            <input type="text" id="nama" placeholder="Masukkan nama lengkap Anda sesuai KTP" required>
+            <input type="text" id="nama" placeholder="Masukkan nama lengkap sesuai KTP" required>
         </div>
 
         <!-- 2. Input Alamat Calon Pelanggan -->
         <div class="form-group">
-            <label for="alamat">Alamat Lengkap</label>
+            <label for="alamat">Alamat Lengkap Rumah</label>
             <textarea id="alamat" placeholder="Contoh: Jl. Merdeka No. 12, RT 03/RW 04, Kec. Sukamaju" required></textarea>
         </div>
 
         <!-- 3. Input Nomor Telepon (WhatsApp) -->
         <div class="form-group">
             <label for="whatsapp">Nomor WhatsApp Aktif</label>
-            <input type="tel" id="whatsapp" placeholder="Contoh: 08123456789" required>
+            <input type="tel" id="whatsapp" placeholder="Contoh: 0856xxxxxx" required>
         </div>
 
         <!-- 4. Input Titik Koordinat (Otomatis & Sinkron) -->
         <div class="form-group">
-            <label for="koordinat">Titik Koordinat Lokasi Rumah</label>
+            <label for="koordinat">Titik Koordinat Rumah (GPS)</label>
             <div class="location-wrapper">
-                <input type="text" id="koordinat" placeholder="Sedang mencari lokasi..." readonly required>
+                <input type="text" id="koordinat" placeholder="Sedang mendeteksi lokasi..." readonly required>
                 <button type="button" class="btn-location" onclick="getLocation()">Ambil Ulang</button>
             </div>
-            <div class="note" id="status-lokasi">*Sistem sedang mengambil lokasi Anda saat ini secara otomatis...</div>
+            <div class="note" id="status-lokasi">*Mengakses GPS otomatis agar admin mudah menemukan lokasi Anda...</div>
         </div>
 
-        <!-- 5. Input Lampiran Foto Depan Rumah -->
+        <!-- 5. Input Lampiran Foto Depan Rumah (Langsung Kamera HP) -->
         <div class="form-group">
             <label for="foto">Foto Depan Rumah</label>
-            <input type="file" id="foto" accept="image/*" required>
-            <div class="note">*Wajib dikirim ulang secara manual via WhatsApp nanti agar mudah divalidasi.</div>
+            <!-- capture="environment" memicu kamera belakang HP secara langsung -->
+            <input type="file" id="foto" accept="image/*" capture="environment" required>
+            <div class="note">*Ketuk untuk mengambil foto. Wajib kirim ulang manual via chat WhatsApp nanti.</div>
         </div>
 
+        <!-- BUTTON KIRIM DATA -->
         <button type="submit" class="btn-submit">
-            <!-- Icon WhatsApp Simpel -->
+            <!-- Icon WhatsApp -->
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="#ffffff" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91m0 1.5c4.63 0 8.41 3.79 8.41 8.41S16.67 20.32 12.04 20.32c-1.55 0-3.07-.43-4.38-1.25l-.31-.19-3.26.85.87-3.18-.21-.34c-.93-1.47-1.42-3.19-1.42-4.96.01-4.62 3.79-8.41 8.41-8.41m-4.14 3.73c-.22 0-.37.07-.55.22-.19.14-.6.59-.6 1.45s.62 1.68.71 1.8c.09.12 1.21 1.85 2.94 2.59.41.18.74.29 1 .39.42.13.8.11 1.1.07.33-.05 1.02-.42 1.17-.83.14-.41.14-.77.1-.83-.04-.07-.16-.1-.34-.2s-1.02-.5-1.17-.56-.27-.08-.37.07c-.1.16-.39.49-.48.6-.09.11-.18.12-.36.03-.18-.09-.76-.28-1.45-.89-.54-.48-.9-.63-.98-.75-.1-.1-.01-.16.08-.25.08-.08.18-.21.27-.31.09-.1.12-.17.18-.28.06-.11.03-.21-.02-.3-.04-.1-.38-.93-.53-1.28-.14-.36-.28-.31-.38-.31z" />
             </svg>
@@ -244,14 +243,14 @@
 </div>
 
 <script>
-    // FUNGSI GEOLOCATION
+    // FUNGSI OTOMATIS GPS LOKASI
     const koordinatInput = document.getElementById('koordinat');
     const statusLokasi = document.getElementById('status-lokasi');
 
     function getLocation() {
         if (navigator.geolocation) {
             statusLokasi.textContent = "Sedang melacak posisi GPS...";
-            statusLokasi.style.color = "#ff9900"; /* Warna oranye saat loading */
+            statusLokasi.style.color = "#ff9900";
             
             navigator.geolocation.getCurrentPosition(showPosition, showError, {
                 enableHighAccuracy: true,
@@ -259,8 +258,8 @@
                 maximumAge: 0
             });
         } else {
-            statusLokasi.textContent = "Browser Anda tidak mendukung pelacakan lokasi.";
-            statusLokasi.style.color = "#cc0000"; /* Warna merah eror */
+            statusLokasi.textContent = "Browser tidak mendukung pelacakan otomatis.";
+            statusLokasi.style.color = "#cc0000";
             koordinatInput.removeAttribute('readonly');
             koordinatInput.placeholder = "Masukkan koordinat manual";
         }
@@ -271,27 +270,27 @@
         const lon = position.coords.longitude;
         koordinatInput.value = `https://maps.google.com/?q=${lat},${lon}`;
         statusLokasi.textContent = "✓ Lokasi berhasil disinkronkan otomatis!";
-        statusLokasi.style.color = "#1aae54"; /* Warna hijau sukses */
+        statusLokasi.style.color = "#1aae54";
     }
 
     function showError(error) {
         koordinatInput.removeAttribute('readonly');
-        koordinatInput.placeholder = "Masukkan koordinat / link maps manual";
+        koordinatInput.placeholder = "Ketik koordinat / link maps manual";
         
         switch(error.code) {
             case error.PERMISSION_DENIED:
-                statusLokasi.textContent = "Izin lokasi ditolak. Silakan ketik manual atau aktifkan GPS.";
+                statusLokasi.textContent = "Izin GPS ditolak. Silakan ketik lokasi manual.";
                 break;
             default:
-                statusLokasi.textContent = "Gagal mengambil lokasi. Silakan isi manual.";
+                statusLokasi.textContent = "Gagal melacak GPS. Silakan ketik lokasi manual.";
                 break;
         }
-        statusLokasi.style.color = "#cc0000"; /* Warna merah eror */
+        statusLokasi.style.color = "#cc0000";
     }
 
     window.onload = getLocation;
 
-    // FUNGSI KIRIM WHATSAPP
+    // HUBUNGKAN KE WHATSAPP ADMIN
     document.getElementById('wifiForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -300,17 +299,15 @@
         const whatsapp = document.getElementById('whatsapp').value;
         const koordinat = koordinatInput.value;
         
-        // Nomor Admin MeyLink
-        const adminWhatsApp = "6285652305040"; 
+        const adminWhatsApp = "6285652305040"; // No WA Admin MeyLink
 
-        // Membuat format pesan teks
         let teksPesan = `*REGISTRASI PASANG BARU MEYLINK*\n`;
-        teksPesan += `--------------------------------\n`;
+        teksPesan += `================================\n`;
         teksPesan += `*Nama:* ${nama}\n`;
         teksPesan += `*Alamat:* ${alamat}\n`;
         teksPesan += `*No. WA:* ${whatsapp}\n`;
-        teksPesan += `*Lokasi:* ${koordinat}\n\n`;
-        teksPesan += `_Catatan: Mohon lampirkan foto depan rumah Anda setelah pesan ini terkirim._`;
+        teksPesan += `*Link Lokasi:* ${koordinat}\n\n`;
+        teksPesan += `_Catatan: Mohon lampirkan hasil foto depan rumah Anda setelah pesan ini terkirim._`;
 
         const pesanValid = encodeURIComponent(teksPesan);
         const urlWhatsApp = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${pesanValid}`;
