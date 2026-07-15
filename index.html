@@ -9,19 +9,22 @@
            PENGATURAN BACKGROUND (EDIT DI SINI UNTUK MENGGANTI)
            ========================================================== */
         body {
-            /* PILIHAN 1: Jika ingin menggunakan WARNA gradasi internet oranye (Bawaan saat ini) */
-            background-color: #121824;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 153, 0, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 86, 179, 0.15) 0%, transparent 40%),
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
 
-            /* PILIHAN 2: Jika ingin menggunakan GAMBAR dari internet,
-               hapus tanda kutip komentar di bawah ini & masukkan URL gambarnya */
-            /* background: url('bg-pilihan.png') no-repeat center center fixed; */
-            /* background-size: cover; */
+            /* PANGGIL GAMBAR BACKGROUND ANDA DI SINI */
+            /* Silakan ganti 'bg-pilihan.jpg' sesuai nama & format file gambar Anda (misal: .png / .jpeg) */
+            background-image: url('bg-pilihan.png'); 
+            
+            /* Pengaturan agar gambar latar belakang rapi dan memenuhi layar */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
         }
         /* ========================================================== */
 
@@ -32,16 +35,7 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* KONTENER FORMULIR */
+        /* KONTENER FORMULIR CANGKIH */
         .form-container {
             background-color: #ffffff;
             padding: 40px;
@@ -49,10 +43,10 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 500px;
-            border-top: 6px solid #ff9900;
+            border-top: 6px solid #ff9900; /* Aksen garis oranye khas MeyLink */
         }
 
-        /* HEADER BRAND */
+        /* HEADER BRAND (LOGO & KETERANGAN) */
         .brand-header {
             text-align: center;
             margin-bottom: 30px;
@@ -116,7 +110,7 @@
             height: 90px;
         }
 
-        /* GPS AUTOMATION */
+        /* GPS AUTOMATION SETUP */
         .location-wrapper {
             display: flex;
             gap: 10px;
@@ -153,7 +147,7 @@
             font-style: italic;
         }
 
-        /* DESAIN DUA TOMBOL FOTO SEJAJAR & KONTEN DI TENGAH SEMPURNA */
+        /* DESAIN DUA TOMBOL FOTO MINIMALIS & KONTEN TERPUSAT SEMPURNA */
         .photo-buttons-container {
             display: flex;
             gap: 12px;
@@ -167,10 +161,10 @@
         .btn-photo-option {
             flex: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center;      /* Menyelaraskan vertikal di tengah */
+            justify-content: center;   /* Menyelaraskan horizontal di tengah */
             gap: 8px;
-            padding: 10px 8px;
+            padding: 10px 8px;         /* Dimensi minimalis dan tipis */
             border: 1.5px dashed #ff9900;
             border-radius: 6px;
             background-color: #fffcf7;
@@ -214,7 +208,7 @@
             display: none;
         }
 
-        /* TOMBOL SUBMIT KE WHATSAPP ADMIN */
+        /* TOMBOL UTAMA WHATSAPP ADMIN */
         .btn-submit {
             background-color: #25D366;
             color: #ffffff;
@@ -358,7 +352,7 @@
     function showPosition(position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        koordinatInput.value = `http://googleusercontent.com/maps.google.com/9{lat},${lon}`;
+        koordinatInput.value = `http://maps.google.com/?q=${lat},${lon}`;
         statusLokasi.textContent = "✓ Lokasi berhasil disinkronkan otomatis!";
         statusLokasi.style.color = "#1aae54";
     }
