@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Pasang Baru MeyLink</title>
+    <style>
+        /* RESET DASAR */
+        body, h1, div, form, input, textarea, label {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BACKGROUND UTAMA DENGAN AKSEN ORANGE MEYLINK */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Latar belakang putih dengan gradasi lembut orange ke arah kanan bawah */
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 60%, #ff9900 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* KONTENER FORMULIR */
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Bayangan lebih lembut dan dalam */
+            width: 100%;
+            max-width: 500px;
+            border-top: 5px solid #ff9900; /* Aksen garis oranye di atas form */
+            position: relative; /* Untuk aksen dekoratif jika diperlukan */
+        }
+
+        /* HEADER BRAND (LOGO & JUDUL) */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eeeeee; /* Garis pemisah tipis */
+            padding-bottom: 20px;
+        }
+
+        /* LOGO MEYLINK */
+        .brand-logo {
+            max-width: 180px; /* Lebar logo agar terlihat jelas */
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        /* JUDUL FORMULIR */
+        .brand-title {
+            color: #0056b3; /* Biru MeyLink dari logo */
+            margin: 0;
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase; /* Membuat judul lebih tegas */
+            letter-spacing: 1px;
+        }
+
+        .brand-subtitle {
+            color: #666666;
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+
+        /* GROUP INPUT FORM */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* INPUT FIELD (TEKS & TEXTAREA) */
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eeeeee; /* Border abu-abu netral */
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333333;
+            transition: border-color 0.3s;
+        }
+
+        /* INPUT FIELD KETIKA AKTIF (FOCUS) */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ff9900; /* Border berubah menjadi oranye MeyLink */
+            outline: none;
+        }
+
+        /* TEXTAREA KHUSUS */
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        /* WRAAPER UNTUK KOLOM LOKASI (INPUT + TOMBOL) */
+        .location-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .location-wrapper input {
+            flex: 1;
+            background-color: #f9f9f9; /* Latar belakang input sedikit berbeda untuk readonly */
+        }
+
+        /* TOMBOL "AMBIL ULANG LOKASI" */
+        .btn-location {
+            background-color: #ffffff; /* Putih bersih */
+            color: #ff9900; /* Teks oranye MeyLink */
+            border: 2px solid #ff9900; /* Border oranye MeyLink */
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-location:hover {
+            background-color: #ff9900; /* Menjadi oranye saat hover */
+            color: #ffffff; /* Teks menjadi putih saat hover */
+        }
+
+        /* CATATAN KECIL DI BAWAH INPUT */
+        .note {
+            font-size: 12px;
+            color: #777777;
+            margin-top: 7px;
+            font-style: italic;
+        }
+
+        /* INPUT FILE KHUSUS */
+        .form-group input[type="file"] {
+            border: 2px dashed #ff9900; /* Border putus-putus oranye MeyLink */
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            color: #777777;
+            background-color: #fffaf0; /* Sedikit warna cream */
+        }
+
+        /* TOMBOL KIRIM UTAMA (WHATSAPP) */
+        .btn-submit {
+            background-color: #25D366; /* Warna hijau khas WhatsApp */
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-submit:hover {
+            background-color: #1aae54; /* Hijau lebih gelap saat hover */
+            transform: translateY(-2px); /* Efek terangkat sedikit */
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px); /* Efek ditekan */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <!-- HEADER BRAND: LOGO & JUDUL -->
+    <div class="brand-header">
+        <!-- PASTIKAN FILE logo.png ADA DI FOLDER YANG SAMA -->
+        <img src="logo.png" alt="Logo MeyLink" class="brand-logo">
+        <h1 class="brand-title">MeyLink</h1>
+        <div class="brand-subtitle">Formulir Pendaftaran Pasang Baru WiFi</div>
+    </div>
+    
+    <form id="wifiForm">
+        <!-- 1. Input Nama Calon Pelanggan -->
+        <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Masukkan nama lengkap Anda sesuai KTP" required>
+        </div>
+
+        <!-- 2. Input Alamat Calon Pelanggan -->
+        <div class="form-group">
+            <label for="alamat">Alamat Lengkap</label>
+            <textarea id="alamat" placeholder="Contoh: Jl. Merdeka No. 12, RT 03/RW 04, Kec. Sukamaju" required></textarea>
+        </div>
+
+        <!-- 3. Input Nomor Telepon (WhatsApp) -->
+        <div class="form-group">
+            <label for="whatsapp">Nomor WhatsApp Aktif</label>
+            <input type="tel" id="whatsapp" placeholder="Contoh: 08123456789" required>
+        </div>
+
+        <!-- 4. Input Titik Koordinat (Otomatis & Sinkron) -->
+        <div class="form-group">
+            <label for="koordinat">Titik Koordinat Lokasi Rumah</label>
+            <div class="location-wrapper">
+                <input type="text" id="koordinat" placeholder="Sedang mencari lokasi..." readonly required>
+                <button type="button" class="btn-location" onclick="getLocation()">Ambil Ulang</button>
+            </div>
+            <div class="note" id="status-lokasi">*Sistem sedang mengambil lokasi Anda saat ini secara otomatis...</div>
+        </div>
+
+        <!-- 5. Input Lampiran Foto Depan Rumah -->
+        <div class="form-group">
+            <label for="foto">Foto Depan Rumah</label>
+            <input type="file" id="foto" accept="image/*" required>
+            <div class="note">*Wajib dikirim ulang secara manual via WhatsApp nanti agar mudah divalidasi.</div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            <!-- Icon WhatsApp Simpel -->
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#ffffff" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91m0 1.5c4.63 0 8.41 3.79 8.41 8.41S16.67 20.32 12.04 20.32c-1.55 0-3.07-.43-4.38-1.25l-.31-.19-3.26.85.87-3.18-.21-.34c-.93-1.47-1.42-3.19-1.42-4.96.01-4.62 3.79-8.41 8.41-8.41m-4.14 3.73c-.22 0-.37.07-.55.22-.19.14-.6.59-.6 1.45s.62 1.68.71 1.8c.09.12 1.21 1.85 2.94 2.59.41.18.74.29 1 .39.42.13.8.11 1.1.07.33-.05 1.02-.42 1.17-.83.14-.41.14-.77.1-.83-.04-.07-.16-.1-.34-.2s-1.02-.5-1.17-.56-.27-.08-.37.07c-.1.16-.39.49-.48.6-.09.11-.18.12-.36.03-.18-.09-.76-.28-1.45-.89-.54-.48-.9-.63-.98-.75-.1-.1-.01-.16.08-.25.08-.08.18-.21.27-.31.09-.1.12-.17.18-.28.06-.11.03-.21-.02-.3-.04-.1-.38-.93-.53-1.28-.14-.36-.28-.31-.38-.31z" />
+            </svg>
+            Kirim via WhatsApp
+        </button>
+    </form>
+</div>
+
+<script>
+    // FUNGSI GEOLOCATION
+    const koordinatInput = document.getElementById('koordinat');
+    const statusLokasi = document.getElementById('status-lokasi');
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            statusLokasi.textContent = "Sedang melacak posisi GPS...";
+            statusLokasi.style.color = "#ff9900"; /* Warna oranye saat loading */
+            
+            navigator.geolocation.getCurrentPosition(showPosition, showError, {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            });
+        } else {
+            statusLokasi.textContent = "Browser Anda tidak mendukung pelacakan lokasi.";
+            statusLokasi.style.color = "#cc0000"; /* Warna merah eror */
+            koordinatInput.removeAttribute('readonly');
+            koordinatInput.placeholder = "Masukkan koordinat manual";
+        }
+    }
+
+    function showPosition(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        koordinatInput.value = `https://maps.google.com/?q=${lat},${lon}`;
+        statusLokasi.textContent = "✓ Lokasi berhasil disinkronkan otomatis!";
+        statusLokasi.style.color = "#1aae54"; /* Warna hijau sukses */
+    }
+
+    function showError(error) {
+        koordinatInput.removeAttribute('readonly');
+        koordinatInput.placeholder = "Masukkan koordinat / link maps manual";
+        
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                statusLokasi.textContent = "Izin lokasi ditolak. Silakan ketik manual atau aktifkan GPS.";
+                break;
+            default:
+                statusLokasi.textContent = "Gagal mengambil lokasi. Silakan isi manual.";
+                break;
+        }
+        statusLokasi.style.color = "#cc0000"; /* Warna merah eror */
+    }
+
+    window.onload = getLocation;
+
+    // FUNGSI KIRIM WHATSAPP
+    document.getElementById('wifiForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nama = document.getElementById('nama').value;
+        const alamat = document.getElementById('alamat').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+        const koordinat = koordinatInput.value;
+        
+        // Nomor Admin MeyLink
+        const adminWhatsApp = "6285652305040"; 
+
+        // Membuat format pesan teks
+        let teksPesan = `*REGISTRASI PASANG BARU MEYLINK*\n`;
+        teksPesan += `--------------------------------\n`;
+        teksPesan += `*Nama:* ${nama}\n`;
+        teksPesan += `*Alamat:* ${alamat}\n`;
+        teksPesan += `*No. WA:* ${whatsapp}\n`;
+        teksPesan += `*Lokasi:* ${koordinat}\n\n`;
+        teksPesan += `_Catatan: Mohon lampirkan foto depan rumah Anda setelah pesan ini terkirim._`;
+
+        const pesanValid = encodeURIComponent(teksPesan);
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${pesanValid}`;
+
+        window.open(urlWhatsApp, '_blank');
+    });
+</script>
+
+</body>
+</html>
