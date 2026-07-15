@@ -5,14 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Pasang Baru MeyLink</title>
     <style>
-        /* RESET DASAR */
-        body, h1, div, form, input, textarea, label {
+        /* ==========================================================
+           PENGATURAN BACKGROUND (EDIT DI SINI UNTUK MENGGANTI)
+           ========================================================== */
+        body {
+            /* PILIHAN 1: Jika ingin menggunakan WARNA gradasi internet oranye (Bawaan saat ini) */
+            background-color: #121824;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 153, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 86, 179, 0.15) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+
+            /* PILIHAN 2: Jika ingin menggunakan GAMBAR dari internet,
+               hapus tanda kutip komentar di bawah ini & masukkan URL gambarnya */
+            /* background: url('https://alamat-web-foto.com/gambar-internet.jpg') no-repeat center center fixed; */
+            /* background-size: cover; */
+        }
+        /* ========================================================== */
+
+        /* RESET DASAR & TATA LETAK UTAMA */
+        body, h1, div, form, input, textarea, label, select {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* BACKGROUND MODERN BERANUSANSA INTERNET & AKSEN ORANGE */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
@@ -20,16 +39,6 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            
-            /* Kombinasi warna gelap teknologi dengan gradasi oranye MeyLink */
-            background-color: #121824;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 153, 0, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 86, 179, 0.15) 0%, transparent 40%),
-                /* Pola garis kotak-kotak halus (Grid digital ala internet) */
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
         }
 
         /* KONTENER FORMULIR */
@@ -40,10 +49,10 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 500px;
-            border-top: 6px solid #ff9900; /* Garis Oranye MeyLink */
+            border-top: 6px solid #ff9900;
         }
 
-        /* HEADER BRAND (HANYA LOGO & KETERANGAN) */
+        /* HEADER BRAND */
         .brand-header {
             text-align: center;
             margin-bottom: 30px;
@@ -51,7 +60,6 @@
             padding-bottom: 20px;
         }
 
-        /* LOGO MEYLINK */
         .brand-logo {
             max-width: 180px;
             height: auto;
@@ -77,24 +85,27 @@
             color: #333333;
             font-weight: 600;
             font-size: 15px;
+            text-align: left;
         }
 
-        /* INPUT FIELD */
+        /* INPUT FIELD & DROPDOWN SELECT */
         .form-group input[type="text"],
         .form-group input[type="tel"],
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 15px;
             color: #333333;
+            background-color: #ffffff;
             transition: all 0.3s;
         }
 
-        /* FOKUS INPUT KE WARNA ORANGE */
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             border-color: #ff9900;
             box-shadow: 0 0 8px rgba(255, 153, 0, 0.2);
             outline: none;
@@ -105,7 +116,7 @@
             height: 90px;
         }
 
-        /* GPS / LOKASI AUTOMATION */
+        /* GPS AUTOMATION */
         .location-wrapper {
             display: flex;
             gap: 10px;
@@ -142,15 +153,65 @@
             font-style: italic;
         }
 
-        /* INPUT FOTO DENGAN KAMERA */
-        .form-group input[type="file"] {
-            border: 2px dashed #ff9900;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            color: #555555;
+        /* DESAIN DUA TOMBOL FOTO SEJAJAR & KONTEN DI TENGAH SEMPURNA */
+        .photo-buttons-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .hide-file-input {
+            display: none;
+        }
+
+        .btn-photo-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 8px;
+            border: 1.5px dashed #ff9900;
+            border-radius: 6px;
             background-color: #fffcf7;
+            color: #ff9900;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-content-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-photo-option svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .btn-photo-option:hover {
+            background-color: #ff9900;
+            color: #ffffff;
+        }
+        
+        .btn-photo-option.file-selected {
+            border-style: solid;
+            background-color: #e6f7ed;
+            border-color: #1aae54;
+            color: #1aae54;
+        }
+
+        .file-status {
+            font-size: 13px;
+            color: #1aae54;
+            font-weight: bold;
+            margin-top: 5px;
+            display: none;
         }
 
         /* TOMBOL SUBMIT KE WHATSAPP ADMIN */
@@ -178,62 +239,76 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
-
-        .btn-submit:active {
-            transform: translateY(1px);
-        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <!-- HEADER BRAND: HANYA LOGO DAN SUB-JUDUL -->
     <div class="brand-header">
-        <!-- Pastikan file logo.png berada di satu folder yang sama di GitHub -->
         <img src="logo.png" alt="Logo MeyLink" class="brand-logo">
         <div class="brand-subtitle">Formulir Pendaftaran Pasang Baru WiFi</div>
     </div>
     
     <form id="wifiForm">
-        <!-- 1. Input Nama Calon Pelanggan -->
         <div class="form-group">
             <label for="nama">Nama Lengkap</label>
             <input type="text" id="nama" placeholder="Masukkan nama lengkap sesuai KTP" required>
         </div>
 
-        <!-- 2. Input Alamat Calon Pelanggan -->
         <div class="form-group">
             <label for="alamat">Alamat Lengkap Rumah</label>
             <textarea id="alamat" placeholder="Contoh: Jl. Merdeka No. 12, RT 03/RW 04, Kec. Sukamaju" required></textarea>
         </div>
 
-        <!-- 3. Input Nomor Telepon (WhatsApp) -->
         <div class="form-group">
             <label for="whatsapp">Nomor WhatsApp Aktif</label>
             <input type="tel" id="whatsapp" placeholder="Contoh: 0856xxxxxx" required>
         </div>
 
-        <!-- 4. Input Titik Koordinat (Otomatis & Sinkron) -->
+        <div class="form-group">
+            <label for="paket">Pilihan Paket WiFi</label>
+            <select id="paket" required>
+                <option value="" disabled selected>-- Pilih Paket Langganan --</option>
+                <option value="Up to 7 Mbps - Rp. 250.000/Bln">Up to 7 Mbps Rp. 250.000/Bln</option>
+                <option value="Up to 10 Mbps - Rp. 300.000/Bln">Up to 10 Mbps Rp. 300.000/Bln</option>
+            </select>
+        </div>
+
         <div class="form-group">
             <label for="koordinat">Titik Koordinat Rumah (GPS)</label>
             <div class="location-wrapper">
                 <input type="text" id="koordinat" placeholder="Sedang mendeteksi lokasi..." readonly required>
-                <button type="button" class="btn-location" onclick="getLocation()">Ambil Ulang</button>
+                <button type="button" class="btn-location" onclick="getLocation()">Dapatkan Lokasi</button>
             </div>
             <div class="note" id="status-lokasi">*Mengakses GPS otomatis agar admin mudah menemukan lokasi Anda...</div>
         </div>
 
-        <!-- 5. Input Lampiran Foto Depan Rumah (Langsung Kamera HP) -->
         <div class="form-group">
-            <label for="foto">Foto Depan Rumah</label>
-            <!-- capture="environment" memicu kamera belakang HP secara langsung -->
-            <input type="file" id="foto" accept="image/*" capture="environment" required>
-            <div class="note">*Ketuk untuk mengambil foto. Wajib kirim ulang manual via chat WhatsApp nanti.</div>
+            <label for="fotoContainer">Foto Rumah (Tampak Depan)</label>
+            
+            <div class="photo-buttons-container" id="fotoContainer">
+                <label for="fotoGaleri" class="btn-photo-option" id="labelGaleri">
+                    <div class="btn-content-wrapper">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19H5V5H19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M13.96,12.29L11.21,15.83L9.25,13.47L6.5,17H17.5L13.96,12.29Z" /></svg>
+                        <span>Pilih File</span>
+                    </div>
+                </label>
+                <input type="file" id="fotoGaleri" class="hide-file-input" accept="image/*">
+
+                <label for="fotoKamera" class="btn-photo-option" id="labelKamera">
+                    <div class="btn-content-wrapper">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z" /></svg>
+                        <span>Buka Kamera</span>
+                    </div>
+                </label>
+                <input type="file" id="fotoKamera" class="hide-file-input" accept="image/*" capture="environment">
+            </div>
+
+            <div id="fileUploadStatus" class="file-status"></div>
+            <div class="note">*Pilih salah satu metode di atas. Wajib kirim ulang manual via chat WhatsApp nanti.</div>
         </div>
 
-        <!-- BUTTON KIRIM DATA -->
         <button type="submit" class="btn-submit">
-            <!-- Icon WhatsApp -->
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="#ffffff" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91m0 1.5c4.63 0 8.41 3.79 8.41 8.41S16.67 20.32 12.04 20.32c-1.55 0-3.07-.43-4.38-1.25l-.31-.19-3.26.85.87-3.18-.21-.34c-.93-1.47-1.42-3.19-1.42-4.96.01-4.62 3.79-8.41 8.41-8.41m-4.14 3.73c-.22 0-.37.07-.55.22-.19.14-.6.59-.6 1.45s.62 1.68.71 1.8c.09.12 1.21 1.85 2.94 2.59.41.18.74.29 1 .39.42.13.8.11 1.1.07.33-.05 1.02-.42 1.17-.83.14-.41.14-.77.1-.83-.04-.07-.16-.1-.34-.2s-1.02-.5-1.17-.56-.27-.08-.37.07c-.1.16-.39.49-.48.6-.09.11-.18.12-.36.03-.18-.09-.76-.28-1.45-.89-.54-.48-.9-.63-.98-.75-.1-.1-.01-.16.08-.25.08-.08.18-.21.27-.31.09-.1.12-.17.18-.28.06-.11.03-.21-.02-.3-.04-.1-.38-.93-.53-1.28-.14-.36-.28-.31-.38-.31z" />
             </svg>
@@ -243,6 +318,27 @@
 </div>
 
 <script>
+    // DETEKSI FEEDBACK UPLOAD FOTO
+    const fotoGaleri = document.getElementById('fotoGaleri');
+    const fotoKamera = document.getElementById('fotoKamera');
+    const labelGaleri = document.getElementById('labelGaleri');
+    const labelKamera = document.getElementById('labelKamera');
+    const fileStatus = document.getElementById('fileUploadStatus');
+
+    function updatePhotoStatus(inputEl, labelEl, otherLabelEl, otherInputEl) {
+        if(inputEl.files.length > 0) {
+            otherInputEl.value = "";
+            otherLabelEl.classList.remove('file-selected');
+            
+            labelEl.classList.add('file-selected');
+            fileStatus.style.display = "block";
+            fileStatus.textContent = `✓ Foto berhasil ditambahkan: (${inputEl.files[0].name.substring(0, 20)}...)`;
+        }
+    }
+
+    fotoGaleri.addEventListener('change', () => updatePhotoStatus(fotoGaleri, labelGaleri, labelKamera, fotoKamera));
+    fotoKamera.addEventListener('change', () => updatePhotoStatus(fotoKamera, labelKamera, labelGaleri, fotoGaleri));
+
     // FUNGSI OTOMATIS GPS LOKASI
     const koordinatInput = document.getElementById('koordinat');
     const statusLokasi = document.getElementById('status-lokasi');
@@ -251,24 +347,18 @@
         if (navigator.geolocation) {
             statusLokasi.textContent = "Sedang melacak posisi GPS...";
             statusLokasi.style.color = "#ff9900";
-            
             navigator.geolocation.getCurrentPosition(showPosition, showError, {
                 enableHighAccuracy: true,
                 timeout: 10000,
                 maximumAge: 0
             });
-        } else {
-            statusLokasi.textContent = "Browser tidak mendukung pelacakan otomatis.";
-            statusLokasi.style.color = "#cc0000";
-            koordinatInput.removeAttribute('readonly');
-            koordinatInput.placeholder = "Masukkan koordinat manual";
         }
     }
 
     function showPosition(position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        koordinatInput.value = `https://maps.google.com/?q=${lat},${lon}`;
+        koordinatInput.value = `http://googleusercontent.com/maps.google.com/9{lat},${lon}`;
         statusLokasi.textContent = "✓ Lokasi berhasil disinkronkan otomatis!";
         statusLokasi.style.color = "#1aae54";
     }
@@ -276,36 +366,35 @@
     function showError(error) {
         koordinatInput.removeAttribute('readonly');
         koordinatInput.placeholder = "Ketik koordinat / link maps manual";
-        
-        switch(error.code) {
-            case error.PERMISSION_DENIED:
-                statusLokasi.textContent = "Izin GPS ditolak. Silakan ketik lokasi manual.";
-                break;
-            default:
-                statusLokasi.textContent = "Gagal melacak GPS. Silakan ketik lokasi manual.";
-                break;
-        }
+        statusLokasi.textContent = "Gagal melacak GPS. Silakan ketik lokasi manual.";
         statusLokasi.style.color = "#cc0000";
     }
 
     window.onload = getLocation;
 
-    // HUBUNGKAN KE WHATSAPP ADMIN
+    // VALIDASI & HUBUNGKAN KE WHATSAPP
     document.getElementById('wifiForm').addEventListener('submit', function(e) {
         e.preventDefault();
+
+        if (fotoGaleri.files.length === 0 && fotoKamera.files.length === 0) {
+            alert("Silakan masukkan foto depan rumah Anda terlebih dahulu (Pilih File atau Buka Kamera).");
+            return;
+        }
 
         const nama = document.getElementById('nama').value;
         const alamat = document.getElementById('alamat').value;
         const whatsapp = document.getElementById('whatsapp').value;
+        const paket = document.getElementById('paket').value;
         const koordinat = koordinatInput.value;
         
-        const adminWhatsApp = "6285652305040"; // No WA Admin MeyLink
+        const adminWhatsApp = "6285652305040";
 
         let teksPesan = `*REGISTRASI PASANG BARU MEYLINK*\n`;
         teksPesan += `================================\n`;
         teksPesan += `*Nama:* ${nama}\n`;
         teksPesan += `*Alamat:* ${alamat}\n`;
         teksPesan += `*No. WA:* ${whatsapp}\n`;
+        teksPesan += `*Paket Pilihan:* ${paket}\n`;
         teksPesan += `*Link Lokasi:* ${koordinat}\n\n`;
         teksPesan += `_Catatan: Mohon lampirkan hasil foto depan rumah Anda setelah pesan ini terkirim._`;
 
